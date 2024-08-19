@@ -76,7 +76,6 @@ class KMeans:
         else:
             raise ValueError("Input type not recognized. Please provide a list, numpy array, or pandas DataFrame/Series.")
 
-
     def fit(self, X):
         """
         Compute k-means clustering.
