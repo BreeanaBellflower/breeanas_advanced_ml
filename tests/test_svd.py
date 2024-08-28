@@ -35,6 +35,7 @@ def test_svd_transform(sample_data):
     assert transformed.shape == (10, 3)
     np.testing.assert_allclose(np.abs(transformed), np.abs(compared), rtol=1e-5, atol=1e-8)
     np.testing.assert_allclose(np.abs(svd.components_), np.abs(skm.components_), rtol=1e-5, atol=1e-8)
+    np.testing.assert_allclose(np.abs(svd.explained_variance_ratio_), np.abs(skm.explained_variance_ratio_), rtol=1e-5, atol=1e-8)
 
 def test_svd_inverse_transform(sample_data):
     svd = SVD()
