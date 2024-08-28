@@ -55,8 +55,10 @@ class SVD:
             self.singular_values_ = np.sqrt(eigenvalues[:self.n_components])
             self.components_ = eigenvectors[:, :self.n_components].T
             self.U = np.dot(X, self.components_.T) / self.singular_values_
-            total_variance = np.sum(eigenvalues)
-            self.explained_variance_ratio_ = eigenvalues[:self.n_components] / total_variance
+            X_transformed = self.transform(X)
+            self.explained_variance_ = np.var(X_transformed, axis=0)
+            total_var = np.var(X, axis=0).sum()
+            self.explained_variance_ratio_ = self.explained_variance_ / total_var
         except np.linalg.LinAlgError:
             raise ValueError("SVD did not converge.")
 
